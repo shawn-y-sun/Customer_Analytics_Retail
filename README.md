@@ -1,2 +1,2 @@
-# Customer_Analytics_FMCG
-Project of Customer Analytics for a FMCG company
+# Customer Analytics for FMCG Company: Project Overview
+* This project aims to 
