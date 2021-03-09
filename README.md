@@ -7,6 +7,7 @@ To measure the
 The key metric to measure the variation of 
 Analysis are mainly conducted on segmentation and positioning, two major components of the tradition STP framework, to extract insights on customer characteristics and purchase behaviors. 
 
+<span style="background-color: #FFFF00">Marked text</span>
 
 * Goal: this project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies for different brands of candy bars according to the insights gained through customer segementation analytics, purchase descriptive analysis, and purchase predictive analytics
 * Reasons: it helps to create a single, accurate view of a customer to make decisions about how best to acquire and retain customers, identify high-value customers and proactively interact with them
@@ -102,7 +103,7 @@ After fitting our data with the selected number of compoenents, we get the loadi
 |     Component 2    |     0.458006     |     0.512635          |     0.312208    |     0.639807     |     0.124683     |     0.014658      |     -0.069632          |
 |     Component 3    |     -0.293013    |     -0.441977         |     0.609544    |     0.275605     |     -0.165662    |     -0.395505     |     -0.295685          |
 
-Visualize the loadings by heatmap
+Visualize the loadings by heatmap<br>
 ![image](https://user-images.githubusercontent.com/77659538/110481794-e83b3e80-8122-11eb-9438-02b1742b8e84.png)
 
 ![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: each component shows a dimension of individual features
