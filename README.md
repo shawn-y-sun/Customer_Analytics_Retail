@@ -21,7 +21,7 @@ Analysis are mainly conducted on segmentation and positioning, two major compone
 * __Dataset Source__: https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases
 
 ## Datasets Information
-[_**segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv)<br> contains the data of our customers that we use to build model for segmentation
+[_**segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv) contains the data of our customers that we use to build model for segmentation<br>
 [_**'purchase data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=purchase+data.csv)
 
 
@@ -52,7 +52,7 @@ Notes:
 #### Correlation estimate
 ![image](https://user-images.githubusercontent.com/77659538/110475812-487ab200-811c-11eb-9e8a-4bd503838d54.png)
 
-🔴Insights: we can spot some level of correlations between certain pairs of variables, such as Income vs Occupation, Education vs Age, Settlement Size vs Occupation. It indicates that we can reduce the dimensions of portraying our customers without losing too much information, allowing us to segmenting our customers more accurately.
+🔶 Insights: we can spot some level of correlations between certain pairs of variables, such as Income vs Occupation, Education vs Age, Settlement Size vs Occupation. It indicates that we can reduce the dimensions of portraying our customers without losing too much information, allowing us to segmenting our customers more accurately.
 
 
 ### Clustering
@@ -78,7 +78,7 @@ Using 'Elbow method', we choose 4 clusters to segment our customers and get the 
 |     standard               |     0.029825    |     0.173684          |     35.635088    |     0.733333     |     141218.249123    |     1.271930      |     1.522807           |     570      |     0.2850      |
 |     career focused         |     0.853901    |     0.997163          |     28.963121    |     1.068085     |     105759.119149    |     0.634043      |     0.422695           |     705      |     0.3525      |
 
-![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: we have 4 segments of customers
+🔶 Insights: we have 4 segments of customers
 - Well-off: senior-aged, highly-educated, high income,
 - Fewer-opportunities: single, middle-aged, low income, low-level occupation, small living size
 - Career-focused: non-single, young, educated
@@ -105,7 +105,7 @@ After fitting our data with the selected number of compoenents, we get the loadi
 Visualize the loadings by heatmap<br>
 ![image](https://user-images.githubusercontent.com/77659538/110481794-e83b3e80-8122-11eb-9438-02b1742b8e84.png)
 
-![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: each component shows a dimension of individual features
+🔶 Insights: each component shows a dimension of individual features
 - Component 1: represents the career focusness by relating to income, occupation, and settlement size
 - Component 2: represents the individual education and life style by relating to sex, marital status, and education
 - Component 3: represents the level of experience (work&life) by relating to marital status, age, and occupation
@@ -124,6 +124,10 @@ Again, we choose 4 clusters to fit our data, and get the below results<br>
 |     well-off                      |     0.505703    |     0.688213          |     55.722433    |     2.129278     |     158391.676806    |     1.129278      |     1.110266           |     1.706153       |     2.031716       |     0.838839       |
 
 
+We plot data by 2 PCA components: Y axis - component 1, X axis - component 2<br>
+![image](https://user-images.githubusercontent.com/77659538/110485951-220e4400-8127-11eb-95df-af5173713103.png)
+
+We can clearly identify 4 clusters!
 
 
 
@@ -134,18 +138,6 @@ ____________________
 
 
 
-
-
-__K-Means Clustering with PCA__<br>
-![image](https://user-images.githubusercontent.com/77659538/109501936-45a40f80-7ad3-11eb-946d-935919e8ceb9.png)
-
-### Model and Files Output
-
-```
-pickle.dump(scaler, open('scaler.pickle', 'wb'))
-pickle.dump(pca, open('pca.pickle', 'wb'))
-pickle.dump(kmeans_pca, open('kmeans_pca.pickle', 'wb'))
-```
 
 ## Purchase Descriptive Analysis
 Dataset: *'purchase data.csv'* <br>
