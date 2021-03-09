@@ -129,100 +129,77 @@ We plot data by 2 PCA components: Y axis - component 1, X axis - component 2<br>
 
 We can clearly identify 4 clusters!
 
+## [2. Purchase Descriptive Analytics](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/2.%20Customer%20Analytics%20-%20Purchase%20Descriptive%20Analysis.ipynb)
 
+### Data Segmentation
+We implement the standardization, PCA, and K-means clustering models from previous part, to segment our customers in purchase dataset. We have the following
 
+|          |     ID           |     Day    |     Incidence    |     Brand    |     Quantity    |     Last_Inc_Brand    |     Last_Inc_Quantity    |     Price_1    |     Price_2    |     Price_3    |     ...    |     Promotion_4    |     Promotion_5    |     Sex    |     Marital status    |     Age    |     Education    |     Income    |     Occupation    |     Settlement size    |     Segment    |
+|----------|------------------|------------|------------------|--------------|-----------------|-----------------------|--------------------------|----------------|----------------|----------------|------------|--------------------|--------------------|------------|-----------------------|------------|------------------|---------------|-------------------|------------------------|----------------|
+|     0    |     200000001    |     1      |     0            |     0        |     0           |     0                 |     0                    |     1.59       |     1.87       |     2.01       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
+|     1    |     200000001    |     11     |     0            |     0        |     0           |     0                 |     0                    |     1.51       |     1.89       |     1.99       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
+|     2    |     200000001    |     12     |     0            |     0        |     0           |     0                 |     0                    |     1.51       |     1.89       |     1.99       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
+|     3    |     200000001    |     16     |     0            |     0        |     0           |     0                 |     0                    |     1.52       |     1.89       |     1.98       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
+|     4    |     200000001    |     18     |     0            |     0        |     0           |     0                 |     0                    |     1.52       |     1.89       |     1.99       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
 
+We visualize the segments<br>
+![image](https://user-images.githubusercontent.com/77659538/110487824-e8d6d380-8128-11eb-906b-12674c5f0c3b.png)
 
-____________________
+### Purchase Occasion and Purchase Incidence
+Plot the average number of store visits for each of the four segments using a bar chart, and display the standard deviation as a straight line
 
+![image](https://user-images.githubusercontent.com/77659538/110488070-1face980-8129-11eb-8e68-d3b46de7cc3a.png)
 
-
-
-
-## Purchase Descriptive Analysis
-Dataset: *'purchase data.csv'* <br>
-
-__Segmentation Proportions__<br>
-![image](https://user-images.githubusercontent.com/77659538/109502230-b0554b00-7ad3-11eb-93cd-9987164707c6.png)
-
-__Purchase Occasion and Purchase Incidence__<br>
-![image](https://user-images.githubusercontent.com/77659538/109502296-c531de80-7ad3-11eb-842c-fc41f4a3e7c6.png)
-
-Insights:
+🔶 Insights:
 - The standard deviation amongst customers from the second segment is quite high. This implies that the customers in this segment are at least homogenous that is least alike when it comes to how often they visit the grocery store
-- The standard fewer opportunities and well-off clusters are very similar in terms of their average store purchases.
-This is welcome information because it would make them more comparable with respect to future analysis
+- The standard fewer opportunities and well-off clusters are very similar in terms of their average store purchases. This is welcome information because it would make them more comparable with respect to our future analysis!
 
-![image](https://user-images.githubusercontent.com/77659538/109502755-5d2fc800-7ad4-11eb-8aab-dec5310f4339.png)
+Display the average number of purchases by segments, help us understand how often each group buys chocholate candy bars<br>
+![image](https://user-images.githubusercontent.com/77659538/110488334-5a168680-8129-11eb-865c-b6c1184ca63a.png)
 
-Insights:
+🔶 Insights:
 - For Career-focused, standard deviation is the highest it might be that a part of the segment buys products very frequently.And another part less so. Although consumers in this segment have a somewhat similar income, the way that they might want to spend their money might differ.
-- The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line 
-- The first segment seems consistent as well with about 25 average purchases and a standard deviation of 30
+- The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line The first segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
 
-__Brand Choice__<br>
-![image](https://user-images.githubusercontent.com/77659538/109502877-86505880-7ad4-11eb-9f12-6026af9e58ee.png)
+### Brand Choice
+First, we select only rows where incidence is one. Then we make dummies for each of the 5 brands.<br>
+|              |     Brand_1    |     Brand_2    |     Brand_3    |     Brand_4    |     Brand_5    |     Segment    |     ID           |
+|--------------|----------------|----------------|----------------|----------------|----------------|----------------|------------------|
+|     6        |     0          |     1          |     0          |     0          |     0          |     0          |     200000001    |
+|     11       |     0          |     0          |     0          |     0          |     1          |     0          |     200000001    |
+|     19       |     1          |     0          |     0          |     0          |     0          |     0          |     200000001    |
+|     24       |     0          |     0          |     0          |     1          |     0          |     0          |     200000001    |
+|     29       |     0          |     1          |     0          |     0          |     0          |     0          |     200000001    |
+|     ...      |     ...        |     ...        |     ...        |     ...        |     ...        |     ...        |     ...          |
+|     58621    |     0          |     1          |     0          |     0          |     0          |     0          |     200000500    |
+|     58648    |     1          |     0          |     0          |     0          |     0          |     0          |     200000500    |
+|     58674    |     0          |     1          |     0          |     0          |     0          |     0          |     200000500    |
+|     58687    |     0          |     1          |     0          |     0          |     0          |     0          |     200000500    |
+|     58691    |     0          |     1          |     0          |     0          |     0          |     0          |     200000500    |
 
-__Revenue__
 
-| Segment             | Revenue Brand 1 | Revenue Brand 2 | Revenue Brand 3 | Revenue Brand 4 | Revenue Brand 5 | Total Revenue | Segment Proportions |
-|---------------------|-----------------|-----------------|-----------------|-----------------|-----------------|---------------|---------------------|
-| Standard            | 2258.9          | 13909.78        | 722.06          | 1805.59         | 2214.82         | 20911.15      | 0.378               |
-| Career-Focused      | 736.09          | 1791.78         | 664.75          | 2363.84         | 19456.74        | 25013.2       | 0.222               |
-| Fewer-Opportunities | 2611.19         | 4768.52         | 3909.17         | 861.38          | 2439.75         | 14590.01      | 0.206               |
-| Well-Off            | 699.47          | 1298.23         | 725.54          | 14009.29        | 5509.69         | 22242.22      | 0.194               |
+Visualize the brand choice by segments<br>
+![image](https://user-images.githubusercontent.com/77659538/110488884-df01a000-8129-11eb-82f9-ffdad58c91ea.png)
 
-Insights:
-- Career-focused is the most prominent segment<br>
-- Standard contributes the least<br>
-- If brand 3 reduces its price, the Standard segment could pivot towards it<br>
+🔶 Insights:
+- Well-off and Career-focused prefer pricy brands
+- Fewer-opportunities and standard prefer low price products
+
+### Revenue
+Compute the total revenue for each of the segments. <br>
+|                            |     Revenue Brand 1    |     Revenue Brand 2    |     Revenue Brand 3    |     Revenue Brand 4    |     Revenue Brand 5    |     Total Revenue    |     Segment Proportions    |
+|----------------------------|------------------------|------------------------|------------------------|------------------------|------------------------|----------------------|----------------------------|
+|     Segment                |                        |                        |                        |                        |                        |                      |                            |
+|     Standard               |     2258.90            |     13909.78           |     722.06             |     1805.59            |     2214.82            |     20911.15         |     0.378                  |
+|     Career-Focused         |     736.09             |     1791.78            |     664.75             |     2363.84            |     19456.74           |     25013.20         |     0.222                  |
+|     Fewer-Opportunities    |     2611.19            |     4768.52            |     3909.17            |     861.38             |     2439.75            |     14590.01         |     0.206                  |
+|     Well-Off               |     699.47             |     1298.23            |     725.54             |     14009.29           |     5509.69            |     22242.22         |     0.194                  |
+
+🔶 Insights:
+- Career-focused is the most prominent segment
+- Standard contributes the least
+- If brand 3 reduces its price, the Standard segment could pivot towards it
 - For well-off segment, Brand 4 could increase its price
 
-## Purchase Predictive Analytics
 
-### Purchase Probability
-
-__Price Elasticity of Purchase Probability__<br>
-![image](https://user-images.githubusercontent.com/77659538/109503434-3625c600-7ad5-11eb-8eee-c26db33c2141.png)
-
-Insights:
-- With prices lower than 1.25, we can increase our product price without losing too much in terms of purchase probability<br>
-- For prices higher than 1.25, We have more to gain by reducing our prices
-
-__Purchase Probability by Segments__<br>
-![image](https://user-images.githubusercontent.com/77659538/109503627-784f0780-7ad5-11eb-9f49-2f85c86bb6e7.png)
-
-Insights:
-- The Career-focused segment are the least elastic when compared to the rest; so, their purchase probability elasticity is not as affected by price <br>
-- The price elasticities for the Standard segment seem to differ across price range; this may be due to the fact that the standard segment is least homogenous, which we discovered during our descriptive analysis <br>
-- It may be that the customers in this segment have different shopping habbits, which is why their customers start with being more elastic than average but then shift to being more inelastic than the average customer and indeed the Career-focused segment
-
-__Purchase Probability with Promotion Feature__<br>
-![image](https://user-images.githubusercontent.com/77659538/109503858-c06e2a00-7ad5-11eb-8ec3-1d3cca70ae9b.png)
-
-Insights:
-- The purchase probability elasticity of the customer is less elastic when there is promotion
-- This is an important insight for marketers, as according to our model people are more likely to buy a product if there is some promotional activity rather than purchase a product with the same price, when it isn't on promotion
-
-### Brand Choice Probability
-
-__Own and Cross-Price Elasticity by Segment of Brand 5__<br>
-![image](https://user-images.githubusercontent.com/77659538/109504054-0925e300-7ad6-11eb-94b4-ba8aa675647a.png)
-
-Insights:
-We can observe differences and similiraties between the segments and examine their preference, when it comes to brand choice.<br>
-The two segments, which seem to be of most interested for the marketing team of brand 5, seem to be the 'Career-focused' and the 'Well-off'. They are also the segments which purchase this brand most often. 
--  The Career-focused segment is the most inelastic and they are the most loyal segment. 
-    -  Based on our model, they do not seem to be that affected by price, therefore brand 5 could increase its price, without fear of significant loss of customers from this segment. 
--  The Well-off segment on the other hand, seems to be more elastic. They also purchase the competitor brand 4 most often.
-    -  In order to target this segment, our analysis signals, that price needs to be decreased. However, keep in mind that other factors aside from price might be influencing the purchase behaivour of this segment.
-
-### Purchase Quantity
-
-__## Price Elasticity with Promotion__<br>
-![image](https://user-images.githubusercontent.com/77659538/109504250-4db17e80-7ad6-11eb-97ed-6acac5851839.png)
-
-Insights:
-- We observe that the two elasticities are very close together for almost the entire price range
-- It appears that promotion does not appear to be a significant factor in the customers' decission what quantity of chocolate candy bars to purchase
-
+## [3. Purchase Predictive Analytics](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/3.%20Customer%20Analytics%20-%20Purchase%20Predictive%20Analytics.ipynb)
