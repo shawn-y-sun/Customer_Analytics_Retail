@@ -1,19 +1,8 @@
-# Customer Analytics for Retail Store
+# Customer Analytics for Retail/FMCG Company
 
 ## Project Overview
-This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies to maximize its revenue on Candy Bars. 
+This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could further maximize revenues on Candy Bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity. Conducting analysis on price elasicity would support us to find the optimal point. We will look at price elasticities of three aspects: purchase proability, brand choice probability, and purchase quantity. By doing this, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. To better position our products, we will firstly perform segmentation on our customers to support our analysis on price elasiticity, allowing us to customize marketing strategies for customers with different backrgounds.
 
-To measure the 
-The key metric to measure the variation of 
-Analysis are mainly conducted on segmentation and positioning, two major components of the tradition STP framework, to extract insights on customer characteristics and purchase behaviors. 
-
-
-* Goal: this project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies for different brands of candy bars according to the insights gained through customer segementation analytics, purchase descriptive analysis, and purchase predictive analytics
-* Reasons: it helps to create a single, accurate view of a customer to make decisions about how best to acquire and retain customers, identify high-value customers and proactively interact with them
-* Approach: this project conducts analysis on Segmentation and Positioning, two major components of the traditional STP Framework, by calculating the following parameters within each customer segments
-  * Purchase probability
-  * Brand choice probability
-  * Purchase quantity
 
 ## Code and Resources Used
 * __Python Version__: 3.8.5
@@ -21,8 +10,8 @@ Analysis are mainly conducted on segmentation and positioning, two major compone
 * __Dataset Source__: https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases
 
 ## Datasets Information
-[_**segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv) contains the data of our customers that we use to build model for segmentation<br>
-[_**'purchase data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=purchase+data.csv)
+[_**segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv) contains data of our customers that we use to build model for segmentation.<br>
+[_**'purchase data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=purchase+data.csv) contains data of each purchase transaction of customers, including price, quantity, brand, incidence.
 
 
 
@@ -263,7 +252,7 @@ By visualizing the result, we get<br>
 - This is an important insight for marketers, as according to our model people are more likely to buy a product if there is some promotional activity rather than purchase a product with the same price, when it isn't on promotion.
 
 ### 3.2 Brand Choice Probability
-### Model Building
+#### Model Building
 ```
 # Set the dependent variable
 Y = brand_choice['Brand']
