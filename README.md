@@ -1,6 +1,13 @@
 # Customer Analytics for Retail Store
 
 ## Project Overview
+This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies to maximize its revenue on Candy Bars. 
+
+To measure the 
+The key metric to measure the variation of 
+Analysis are mainly conducted on segmentation and positioning, two major components of the tradition STP framework, to extract insights on customer characteristics and purchase behaviors. 
+
+
 * Goal: this project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies for different brands of candy bars according to the insights gained through customer segementation analytics, purchase descriptive analysis, and purchase predictive analytics
 * Reasons: it helps to create a single, accurate view of a customer to make decisions about how best to acquire and retain customers, identify high-value customers and proactively interact with them
 * Approach: this project conducts analysis on Segmentation and Positioning, two major components of the traditional STP Framework, by calculating the following parameters within each customer segments
@@ -14,26 +21,120 @@
 * __Dataset Source__: https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases
 
 ## Datasets Information
-*'segmentation data.csv'* <br>
-_'purchase data.csv'_ <br>
+[_**segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv)<br> contains the data of our customers that we use to build model for segmentation
+[_**'purchase data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=purchase+data.csv)
 
-## Customer Segmentation
-Dataset: *'segmentation data.csv'* <br>
 
-### K-Means Clustering
-__K-Means WCSS__<br>
-![image](https://user-images.githubusercontent.com/77659538/109501544-b0088000-7ad2-11eb-9fcd-b34a7a21429b.png)
 
-__K-Means Segmentation__<br>
-![image](https://user-images.githubusercontent.com/77659538/109501602-c6164080-7ad2-11eb-9268-bbe8d4024a54.png)
+## [1. Segmentation](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/1.Customer%20Analytics%20-%20Customer%20Segmentation.ipynb)
 
-### K-Means Clustering with PCA
-__PCA__<br>
-![image](https://user-images.githubusercontent.com/77659538/109501727-f827a280-7ad2-11eb-83d7-67c04d98b694.png)
+### Exploratory Analysis
 
-![image](https://user-images.githubusercontent.com/77659538/109501741-fe1d8380-7ad2-11eb-82f9-0336953a6380.png)
+#### Dataset overview
 
-![image](https://user-images.githubusercontent.com/77659538/109501751-01187400-7ad3-11eb-8cd5-fa20bbea2133.png)
+|                  |     Sex    |     Marital status    |     Age    |     Education    |     Income    |     Occupation    |     Settlement size    |
+|------------------|------------|-----------------------|------------|------------------|---------------|-------------------|------------------------|
+|     ID           |            |                       |            |                  |               |                   |                        |
+|     100000001    |     0      |     0                 |     67     |     2            |     124670    |     1             |     2                  |
+|     100000002    |     1      |     1                 |     22     |     1            |     150773    |     1             |     2                  |
+|     100000003    |     0      |     0                 |     49     |     1            |     89210     |     0             |     0                  |
+|     100000004    |     0      |     0                 |     45     |     1            |     171565    |     1             |     1                  |
+|     100000005    |     0      |     0                 |     53     |     1            |     149031    |     1             |     1                  |
+
+Notes:
+- Sex: 0 - male, 1 - female
+- Marital status: 0 - single, 1-non-single
+- Education: 0 - other/unknown, 1 - high school, 2 - university, 3 - graduate school
+- Occupation: 0 - unemployed, 1 - skilled, 2 - highly qualified
+- Settlement size: 0 - small, 1 - mid sized, 2 - big
+
+
+#### Correlation estimate
+![image](https://user-images.githubusercontent.com/77659538/110475812-487ab200-811c-11eb-9e8a-4bd503838d54.png)
+
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: we can spot some level of correlations between certain pairs of variables, such as Income vs Occupation, Education vs Age, Settlement Size vs Occupation. It indicates that we can reduce the dimensions of portraying our customers without losing too much information, allowing us to segmenting our customers more accurately.
+
+
+### Clustering
+#### Standardization
+Before everything, we standardize our data, so that all features have equal weight
+```
+# Standardizing data, so that all features have equal weight
+scaler = StandardScaler() #Create an instance
+segmentation_std = scaler.fit_transform(df_segmentation) #Apply the fit transformation
+```
+
+#### K-Means Clustering
+First, we perform K-means clustering, considering 1 to 10 clusters, and visisulize the Within Cluster Sum of Square (WCSS)
+
+![image](https://user-images.githubusercontent.com/77659538/110477934-b922ce00-811e-11eb-9149-9b7ece615965.png)
+
+Using 'Elbow method', we choose 4 clusters to segment our customers and get the following characteristics for each group<br>
+|                            |     Sex         |     Marital status    |     Age          |     Education    |     Income           |     Occupation    |     Settlement size    |     N Obs    |     Prop Obs    |
+|----------------------------|-----------------|-----------------------|------------------|------------------|----------------------|-------------------|------------------------|--------------|-----------------|
+|     Segment K-means        |                 |                       |                  |                  |                      |                   |                        |              |                 |
+|     well-off               |     0.501901    |     0.692015          |     55.703422    |     2.129278     |     158338.422053    |     1.129278      |     1.110266           |     263      |     0.1315      |
+|     fewer-opportunities    |     0.352814    |     0.019481          |     35.577922    |     0.746753     |     97859.852814     |     0.329004      |     0.043290           |     462      |     0.2310      |
+|     standard               |     0.029825    |     0.173684          |     35.635088    |     0.733333     |     141218.249123    |     1.271930      |     1.522807           |     570      |     0.2850      |
+|     career focused         |     0.853901    |     0.997163          |     28.963121    |     1.068085     |     105759.119149    |     0.634043      |     0.422695           |     705      |     0.3525      |
+
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: we have 4 segments of customers
+- Well-off: senior-aged, highly-educated, high income,
+- Fewer-opportunities: single, middle-aged, low income, low-level occupation, small living size
+- Career-focused: non-single, young, educated
+- Standard: others
+
+However, if we have choose 2 dimensions to visualize the segmentation, it's hard to identify the groups.
+![image](https://user-images.githubusercontent.com/77659538/110480458-79a9b100-8121-11eb-9829-16a71211f9d4.png)
+
+Therefore, we need to perform the clustering with PCA
+
+#### PCA
+After fitting the PCA with our standardized data, we visualize the explained variance
+![image](https://user-images.githubusercontent.com/77659538/110480893-f50b6280-8121-11eb-9acd-2c062ee886f3.png)
+
+We choose 3 components to represent our data, with over 80% variance explained.<br>
+After fitting our data with the selected number of compoenents, we get the loadings (i.e. correlations) of each component on each of the seven original features
+
+|                    |     Sex          |     Marital status    |     Age         |     Education    |     Income       |     Occupation    |     Settlement size    |
+|--------------------|------------------|-----------------------|-----------------|------------------|------------------|-------------------|------------------------|
+|     Component 1    |     -0.314695    |     -0.191704         |     0.326100    |     0.156841     |     0.524525     |     0.492059      |     0.464789           |
+|     Component 2    |     0.458006     |     0.512635          |     0.312208    |     0.639807     |     0.124683     |     0.014658      |     -0.069632          |
+|     Component 3    |     -0.293013    |     -0.441977         |     0.609544    |     0.275605     |     -0.165662    |     -0.395505     |     -0.295685          |
+
+Visualize the loadings by heatmap
+![image](https://user-images.githubusercontent.com/77659538/110481794-e83b3e80-8122-11eb-9438-02b1742b8e84.png)
+
+![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: each component shows a dimension of individual features
+- Component 1: represents the career focusness by relating to income, occupation, and settlement size
+- Component 2: represents the individual education and life style by relating to sex, marital status, and education
+- Component 3: represents the level of experience (work&life) by relating to marital status, age, and occupation
+
+#### K-Means Clustering with PCA
+We fit K means using the transformed data from the PCA, and get the WCSS below<br>
+![image](https://user-images.githubusercontent.com/77659538/110483187-706e1380-8124-11eb-86a2-febcb80f8096.png)
+
+Again, we choose 4 clusters to fit our data, and get the below results<br>
+|                            |     Sex         |     Marital status    |     Age          |     Education    |     Income           |     Occupation    |     Settlement size    |     Component 1    |     Component 2    |     Component 3    |
+|----------------------------|-----------------|-----------------------|------------------|------------------|----------------------|-------------------|------------------------|--------------------|--------------------|--------------------|
+|     Segment K-means PCA    |                 |                       |                  |                  |                      |                   |                        |                    |                    |                    |
+|     standard                      |     0.307190    |     0.098039          |     35.383442    |     0.766885     |     93566.102397     |     0.248366      |     0.039216           |     -1.048838      |     -0.892116      |     1.010446       |
+|     career focused                      |     0.027350    |     0.167521          |     35.700855    |     0.731624     |     141489.721368    |     1.266667      |     1.475214           |     1.367167       |     -1.050209      |     -0.247981      |
+|     fewer opportunities                      |     0.900433    |     0.965368          |     28.913420    |     1.062049     |     107551.946609    |     0.676768      |     0.440115           |     -1.106918      |     0.706367       |     -0.778269      |
+|     well-off                      |     0.505703    |     0.688213          |     55.722433    |     2.129278     |     158391.676806    |     1.129278      |     1.110266           |     1.706153       |     2.031716       |     0.838839       |
+
+
+
+
+
+
+
+____________________
+
+
+
+
+
 
 __K-Means Clustering with PCA__<br>
 ![image](https://user-images.githubusercontent.com/77659538/109501936-45a40f80-7ad3-11eb-946d-935919e8ceb9.png)
