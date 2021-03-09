@@ -7,7 +7,6 @@ To measure the
 The key metric to measure the variation of 
 Analysis are mainly conducted on segmentation and positioning, two major components of the tradition STP framework, to extract insights on customer characteristics and purchase behaviors. 
 
-<span style="background-color: #FFFF00">Marked text</span>
 
 * Goal: this project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies for different brands of candy bars according to the insights gained through customer segementation analytics, purchase descriptive analysis, and purchase predictive analytics
 * Reasons: it helps to create a single, accurate view of a customer to make decisions about how best to acquire and retain customers, identify high-value customers and proactively interact with them
@@ -53,7 +52,7 @@ Notes:
 #### Correlation estimate
 ![image](https://user-images.githubusercontent.com/77659538/110475812-487ab200-811c-11eb-9e8a-4bd503838d54.png)
 
-![#f03c15](https://via.placeholder.com/15/f03c15/000000?text=+)Insights: we can spot some level of correlations between certain pairs of variables, such as Income vs Occupation, Education vs Age, Settlement Size vs Occupation. It indicates that we can reduce the dimensions of portraying our customers without losing too much information, allowing us to segmenting our customers more accurately.
+🔴Insights: we can spot some level of correlations between certain pairs of variables, such as Income vs Occupation, Education vs Age, Settlement Size vs Occupation. It indicates that we can reduce the dimensions of portraying our customers without losing too much information, allowing us to segmenting our customers more accurately.
 
 
 ### Clustering
