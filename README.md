@@ -11,6 +11,7 @@ To better position our products, we will firstly perform segmentation on our cus
 ## Code and Resources Used
 * __Python Version__: 3.8.5
 * __Packages__: pandas, numpy, sklearn, scipy, matplotlib, seaborn, pickle
+* __Algorithms__: clustering(K-means, PCA), regression(logistic, linear)
 * __Dataset Source__: https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases
 
 ## Datasets Information
