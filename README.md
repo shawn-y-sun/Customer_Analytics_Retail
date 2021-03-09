@@ -3,7 +3,9 @@
 ## Project Overview
 This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could further maximize revenues on Candy Bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity. 
 
-Conducting analysis on price elasicity would support us to find the optimal point. We will look at price elasticities of three aspects: purchase proability, brand choice probability, and purchase quantity. By doing this, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. To better position our products, we will firstly perform segmentation on our customers to support our analysis on price elasiticity, allowing us to customize marketing strategies for customers with different backrgounds.
+Conducting analysis on price elasicity would support us to find the optimal point. We will look at price elasticities of three aspects: purchase proability, brand choice probability, and purchase quantity. By doing this, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. 
+
+To better position our products, we will firstly perform segmentation on our customers to support our analysis on price elasiticity, allowing us to customize marketing strategies for customers with different backrgounds.
 
 
 ## Code and Resources Used
