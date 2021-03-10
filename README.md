@@ -1,11 +1,11 @@
 # Customer Analytics for Retail/FMCG Company
 
 ## Project Overview
-This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could further maximize revenues on Candy Bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity. 
+This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could maximize revenues on Candy Bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity sold. 
 
-Conducting analysis on price elasicity would support us to find the optimal point. We will look at price elasticities of three aspects: purchase proability, brand choice probability, and purchase quantity. By doing this, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. 
+Analysis conducted on price elasticity would support us to find the optimal point in price-quantity relationship. We will look at price elasticities in three aspects: purchase probability, brand choice probability, and purchase quantity. By doing that, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. 
 
-To better position our products, we will firstly perform segmentation on our customers to support our analysis on price elasiticity, allowing us to customize marketing strategies for customers with different backrgounds.
+To better position our products, we will firstly perform segmentation on our customers to support our analysis on price elasticity, allowing us to customize marketing strategies for customers with different backgrounds.
 
 
 ## Code and Resources Used
@@ -59,7 +59,7 @@ segmentation_std = scaler.fit_transform(df_segmentation) #Apply the fit transfor
 ```
 
 #### K-Means Clustering
-First, we perform K-means clustering, considering 1 to 10 clusters, and visisulize the Within Cluster Sum of Square (WCSS)
+First, we perform K-means clustering, considering 1 to 10 clusters, and visualize the Within Cluster Sum of Square (WCSS)
 
 ![image](https://user-images.githubusercontent.com/77659538/110477934-b922ce00-811e-11eb-9149-9b7ece615965.png)
 
@@ -88,7 +88,7 @@ After fitting the PCA with our standardized data, we visualize the explained var
 ![image](https://user-images.githubusercontent.com/77659538/110480893-f50b6280-8121-11eb-9acd-2c062ee886f3.png)
 
 We choose 3 components to represent our data, with over 80% variance explained.<br>
-After fitting our data with the selected number of compoenents, we get the loadings (i.e. correlations) of each component on each of the seven original features
+After fitting our data with the selected number of components, we get the loadings (i.e. correlations) of each component on each of the seven original features
 
 |                    |     Sex          |     Marital status    |     Age         |     Education    |     Income       |     Occupation    |     Settlement size    |
 |--------------------|------------------|-----------------------|-----------------|------------------|------------------|-------------------|------------------------|
@@ -100,8 +100,8 @@ Visualize the loadings by heatmap<br>
 ![image](https://user-images.githubusercontent.com/77659538/110481794-e83b3e80-8122-11eb-9438-02b1742b8e84.png)
 
 🔶 Insights: each component shows a dimension of individual features
-- Component 1: represents the career focusness by relating to income, occupation, and settlement size
-- Component 2: represents the individual education and life style by relating to sex, marital status, and education
+- Component 1: represents the career focuses by relating to income, occupation, and settlement size
+- Component 2: represents the individual education and lifestyle by relating to sex, marital status, and education
 - Component 3: represents the level of experience (work&life) by relating to marital status, age, and occupation
 
 #### K-Means Clustering with PCA
@@ -148,12 +148,12 @@ Plot the average number of store visits for each of the four segments using a ba
 - The standard deviation amongst customers from the second segment is quite high. This implies that the customers in this segment are at least homogenous that is least alike when it comes to how often they visit the grocery store
 - The standard fewer opportunities and well-off clusters are very similar in terms of their average store purchases. This is welcome information because it would make them more comparable with respect to our future analysis!
 
-Display the average number of purchases by segments, help us understand how often each group buys chocholate candy bars<br>
+Display the average number of purchases by segments, help us understand how often each group buys candy bars<br>
 ![image](https://user-images.githubusercontent.com/77659538/110488334-5a168680-8129-11eb-865c-b6c1184ca63a.png)
 
 🔶 Insights:
-- For Career-focused, standard deviation is the highest it might be that a part of the segment buys products very frequently.And another part less so. Although consumers in this segment have a somewhat similar income, the way that they might want to spend their money might differ.
-- The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line The first segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
+- For Career-focused, standard deviation is the highest it might be that a part of the segment buys products very frequently, and another part less so. Although consumers in this segment have a somewhat similar income, the way that they might want to spend their money might differ.
+- The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line. The first segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
 
 ### Brand Choice
 First, we select only rows where incidence is one. Then we make dummies for each of the 5 brands.<br>
@@ -207,7 +207,7 @@ We implement the standardization, PCA, and K-means clustering models from part 1
 Y = df_pa['Incidence']
 ```
 ```
-# Dependant variable is based on the average price of chocolate candy bars. 
+# Dependent variable is based on the average price of chocolate candy bars. 
 # X is a data frame, containing the mean across the five prices.
 X = pd.DataFrame()
 X['Mean_Price'] = (df_pa['Price_1'] +
@@ -246,8 +246,8 @@ By visualizing the result, we get<br>
 
 🔶 Insights:
 - The career-focused segment are the least elastic when compared to the rest. So, their purchase probability elasticity is not as affected by price.
-- The price elasticities for the Standard segment seem to differ across price range. This may be due to the fact that the standard segment is least homogenous, which we discovered during our descriptive analysis.
-- It may be that the customers in this segment have different shopping habbits, which is why their customers start with being more elastic than average but then shift to being more inelastic than the average customer and indeed the Career-focused segment.
+- The price elasticities for the Standard segment seem to differ across price range. This may be because the standard segment is least homogenous, which we discovered during our descriptive analysis.
+- It may be that the customers in this segment have different shopping habits, which is why their customers start with being more elastic than average but then shift to being more inelastic than the average customer and indeed the Career-focused segment.
 
 #### Purchase Probability with and without Promotion Feature
 ![image](https://user-images.githubusercontent.com/77659538/110494242-5e916e00-812e-11eb-8c99-f7568c7bd4ab.png)
@@ -285,7 +285,7 @@ We get the following coefficients:
 
 
 #### Own Price Elasticity Brand 5
-We fit our model and calcuate the price elasticity for brand 5 at the same 'test price range'<br>
+We fit our model and calculate the price elasticity for brand 5 at the same 'test price range'<br>
 By visualizing the result, we get<br>
 ![image](https://user-images.githubusercontent.com/77659538/110494977-0c048180-812f-11eb-8b0e-699f82603802.png)
 
@@ -296,27 +296,27 @@ To calculate the cross brand price elasticity, we use new formula
 brand5_cross_brand4_price_elasticity = -beta5 * price_range * pr_brand_4
 ```
 
-We visualize the the cross price elasticity of purchase probability for brand 5 vs brand 4<br>
+We visualize the the cross-price elasticity of purchase probability for brand 5 vs brand 4<br>
 ![image](https://user-images.githubusercontent.com/77659538/110495271-5423a400-812f-11eb-9c59-4023c515089d.png)
 
 🔶 Insights:
 - We observe they are positive. As the price of the competitor brand increases, so does the probability for purchasing our own brand.
-- Even though the elasticity starts to decrease from the 1.45 mark, it is still positive, signalling that the increase in purchase probability for the own brand happens more slowly.
+- Even though the elasticity starts to decrease from the 1.45 mark, it is still positive, signaling that the increase in purchase probability for the own brand happens more slowly.
 
 #### Own and Cross-Price Elasticity by Segment
 ![image](https://user-images.githubusercontent.com/77659538/110495416-74536300-812f-11eb-9be2-188a45164262.png)
 
-🔶 Insights: The two segments, which seem to be of most interested for the marketing team of brand 5, seem to be the 'Career-focused' and the 'Well-off'. They are also the segments which purchase this brand most often.
+🔶 Insights: The two segments, which seem to be of most interested in the marketing team of brand 5, seem to be the 'Career-focused' and the 'Well-off'. They are also the segments which purchase this brand most often.
 - The Career-focused segment is the most inelastic and they are the most loyal segment.
  - Based on our model, they do not seem to be that affected by price, therefore brand 5 could increase its price, without fear of significant loss of customers from this segment.
 - The Well-off segment on the other hand, seems to be more elastic. They also purchase the competitor brand 4 most often.
- - In order to target this segment, our analysis signals, that price needs to be decreased. However, keep in mind that other factors aside from price might be influencing the purchase behaivour of this segment.
+ - In order to target this segment, our analysis signals, that price needs to be decreased. However, keep in mind that other factors aside from price might be influencing the purchase behavior of this segment.
 
 ### 3.3 Purchase Quantity
 
 #### Model Estimation
 
-To determine price elasticity of purchase quantity, also known as price elasticity of demand, we're interested in purchase ocassion, where the purchased quantity is different from 0.
+To determine price elasticity of purchase quantity, also known as price elasticity of demand, we're interested in purchase occasion, where the purchased quantity is different from 0.
 ```
 # Filter our data
 df_purchase_quantity = df_pa[df_pa['Incidence'] == 1]
@@ -370,4 +370,4 @@ Plot the two elasticities (with and without promotion) side by side<br>
 
 🔶 Insights:
 - We observe that the two elasticities are very close together for almost the entire price range.
-- It appears that promotion does not appear to be a significant factor in the customers' decission what quantity of chocolate candy bars to purchase.
+- It appears that promotion does not appear to be a significant factor in the customers' decision what quantity of chocolate candy bars to purchase.
