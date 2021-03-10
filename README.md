@@ -15,7 +15,7 @@ To better position our products, we will firstly perform segmentation on our cus
 * __Dataset Source__: https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases
 
 ## Datasets Information
-[_**segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv) contains data of our customers that we use to build model for segmentation.<br>
+[_**'segmentation data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=segmentation+data.csv) contains data of our customers that we use to build model for segmentation.<br>
 [_**'purchase data.csv'**_](https://www.kaggle.com/shawnysun/fmcg-data-customers-and-purchases?select=purchase+data.csv) contains data of each purchase transaction of customers, including price, quantity, brand, incidence.
 
 
