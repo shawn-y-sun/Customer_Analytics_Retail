@@ -155,7 +155,7 @@ Display the average number of purchases by segments, help us understand how ofte
 - For Career-focused, standard deviation is the highest it might be that a part of the segment buys products very frequently, and another part less so. Although consumers in this segment have a somewhat similar income, the way that they might want to spend their money might differ.
 - The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line. The first segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
 
-### Brand Choice
+### 2.3 Brand Choice
 First, we select only rows where incidence is one. Then we make dummies for each of the 5 brands.<br>
 |              |     Brand_1    |     Brand_2    |     Brand_3    |     Brand_4    |     Brand_5    |     Segment    |     ID           |
 |--------------|----------------|----------------|----------------|----------------|----------------|----------------|------------------|
@@ -179,7 +179,7 @@ Visualize the brand choice by segments<br>
 - Well-off and Career-focused prefer pricy brands
 - Fewer-opportunities and standard prefer low price products
 
-### 2.3 Revenue
+### 2.4 Revenue
 Compute the total revenue for each of the segments. <br>
 |                            |     Revenue Brand 1    |     Revenue Brand 2    |     Revenue Brand 3    |     Revenue Brand 4    |     Revenue Brand 5    |     Total Revenue    |     Segment Proportions    |
 |----------------------------|------------------------|------------------------|------------------------|------------------------|------------------------|----------------------|----------------------------|
