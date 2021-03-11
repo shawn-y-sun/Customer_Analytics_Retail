@@ -121,8 +121,7 @@ Again, we choose 4 clusters to fit our data, and get the below results<br>
 
 
 We plot data by 2 PCA components: Y axis - component 1, X axis - component 2<br>
-![image](https://user-images.githubusercontent.com/77659538/110753351-70cff100-8281-11eb-97fc-80cffa1dfd52.png)
-
+![image](https://user-images.githubusercontent.com/77659538/110772298-6c620300-8296-11eb-95af-2244b9f87254.png)
 
 We can clearly identify 4 clusters!
 
@@ -142,8 +141,7 @@ We implement the standardization, PCA, and K-means clustering models from previo
 |     4    |     200000001    |     18     |     0            |     0        |     0           |     0                 |     0                    |     1.52       |     1.89       |     1.99       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
 
 We visualize the proportions of total number of purchases by segments<br>
-![image](https://user-images.githubusercontent.com/77659538/110753399-7fb6a380-8281-11eb-9f59-0eb077d0af0c.png)
-
+![image](https://user-images.githubusercontent.com/77659538/110772351-7b48b580-8296-11eb-9695-a712479dd9e1.png)
 
 🔶 Insights: we will most often see fewer-opportunities group shopping candy bars in our store. There are a few possible reasons:
 - they are the biggest customer segments (have more observations)
@@ -154,14 +152,14 @@ We will investigate further below
 ### 2.2 Purchase Occasion and Purchase Incidence
 Plot the average number of store visits for each of the four segments using a bar chart, and display the standard deviation as a straight line
 
-![image](https://user-images.githubusercontent.com/77659538/110753413-8513ee00-8281-11eb-87b7-e88594b983cc.png)
+![image](https://user-images.githubusercontent.com/77659538/110772378-84d21d80-8296-11eb-830a-5ff15858fec8.png)
 
 🔶 Insights:
 - The standard deviation amongst 'Career-Focused' is quite high. This implies that the customers in this segment are at least homogenous that is least alike when it comes to how often they visit the grocery store
 - The standard, fewer opportunities, and well-off clusters are very similar in terms of their average store purchases. This is welcome information because it would make them more comparable with respect to our future analysis!
 
 Display the average number of purchases by segments, help us understand how often each group buys candy bars<br>
-![image](https://user-images.githubusercontent.com/77659538/110753615-bf7d8b00-8281-11eb-900b-457506ffc942.png)
+![image](https://user-images.githubusercontent.com/77659538/110772420-8dc2ef00-8296-11eb-9a9e-a5b856d34386.png)
 
 
 🔶 Insights:
@@ -186,7 +184,7 @@ First, we select only rows where incidence is one. Then we make dummies for each
 
 
 Visualize the brand choice by segments (on average, how often each customer buy each brand in each segment)<br>
-![image](https://user-images.githubusercontent.com/77659538/110753651-cdcba700-8281-11eb-9c4c-fb29ac84d5e1.png)
+![image](https://user-images.githubusercontent.com/77659538/110772463-974c5700-8296-11eb-9bf6-d7bafb55949f.png)
 
 🔶 Insights: Each segment has preference on 1 or 2 brands
 - Well-off and Career-focused prefer pricy brands
@@ -203,14 +201,14 @@ Compute the total revenue for each of the segments. <br>
 |     Well-Off               |     699.47             |     1298.23            |     725.54             |     14009.29           |     5509.69            |     22242.22         |     0.194                  |
 
 
-![image](https://user-images.githubusercontent.com/77659538/110753678-d328f180-8281-11eb-9985-5c4c648ae542.png)
+![image](https://user-images.githubusercontent.com/77659538/110772022-23aa4a00-8296-11eb-891d-61725c01aa3e.png)
 
 🔶 Insights:
 - Career-focused brings the highest revenue although they are far from the biggest standard segment by total number of purchases
 - Well-off brings the second highest revenue even though they are the smallest segment 
 - Standard contributes the least though they are not the smallest segment because they tend to buy low-priced products
 
-![image](https://user-images.githubusercontent.com/77659538/110753800-fb185500-8281-11eb-814d-48193713f8d5.png)
+![image](https://user-images.githubusercontent.com/77659538/110772002-1ee59600-8296-11eb-9475-c3da1926372b.png)
 
 🔶 Insights:
 - Brand 3 does not have any segment as its loyal customers. If brand 3 reduces its price, the standard segment could pivot towards it since they seem to be struggling between brand 3 and brand 2.
@@ -278,7 +276,7 @@ We have to investigate further by segments!
 
 
 #### Purchase Probability by Segments
-![image](https://user-images.githubusercontent.com/77659538/110753953-2d29b700-8282-11eb-92b2-e8b17439157e.png)
+![image](https://user-images.githubusercontent.com/77659538/110771869-f6f63280-8295-11eb-8590-513b246f31df.png)
 
 🔶 Insights:
 - The well-off segment are the least elastic when compared to the rest. So, their purchase probability elasticity is not as affected by price. Fewer-opportunities are a lot more price-sensitive than other groups
@@ -374,7 +372,8 @@ We visualize the the cross-price elasticity of purchase probability for brand 5 
   - Brand 5 can create a marketing strategy targeting customers who choose brand 4, and attract them to buy own brand 5
 
 #### Own and Cross-Price Elasticity by Segment
-![image](https://user-images.githubusercontent.com/77659538/110759426-901e4c80-8288-11eb-8eff-f37ba025ed97.png)
+![image](https://user-images.githubusercontent.com/77659538/110771779-da59fa80-8295-11eb-9d7e-f3b9ad51c093.png)
+
 
 🔶 Insights: Brand 5 should decrease its own price offering while gaining solid market share from the well-off and retaining the career-focused segment, the most frequent buyers of brand 5
 - For Career-focused segment, Brand 5 could increase its price, without fear of significant loss of customers from this segment
