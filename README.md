@@ -200,13 +200,17 @@ Compute the total revenue for each of the segments. <br>
 |     Well-Off               |     699.47             |     1298.23            |     725.54             |     14009.29           |     5509.69            |     22242.22         |     0.194                  |
 
 
+![image](https://user-images.githubusercontent.com/77659538/110742733-d5834f80-8271-11eb-82ec-2a83b6afea25.png)
+
 🔶 Insights:
-By total revenues
 - Career-focused brings the highest revenue by total and average
 - Well-off brings the second highest revenue even though they are the smallest segment 
 - Fewer-Opportunities contributes the least though represents most customers
 
-By brands
+
+![image](https://user-images.githubusercontent.com/77659538/110742761-e03de480-8271-11eb-92d3-7d1b3cb3fd29.png)
+
+🔶 Insights:
 - Brand 3 does not have any segment as its loyal customers. If brand 3 reduces its price, the Fewer-Opportunities segment could pivot towards it
 - Well-off segments mostly prefer brand 4, followed by brand 5. They seem to be not affected by price. Therefore, brand 4 could cautiously try to increase its price. (hypothesis here: will retain most of the customers and increase the revenue per sale)
 - Likewise, for career-focused, Brand 5 could increase its price. 
