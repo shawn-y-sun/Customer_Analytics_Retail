@@ -1,7 +1,7 @@
 # Customer Analytics for Retail/FMCG Company
 
 ## Project Overview
-This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could maximize revenues on Candy Bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity sold. 
+This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could maximize revenues on each brand of candy bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity sold. 
 
 Analysis on price elasticity would support us to find the optimal point in price-quantity relationship. We will look at price elasticities in three aspects: purchase probability, brand choice probability, and purchase quantity. By doing that, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. 
 
@@ -21,6 +21,8 @@ To better position our products, we will firstly perform segmentation on our cus
 
 
 ## [1. Segmentation](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/1.Customer%20Analytics%20-%20Customer%20Segmentation.ipynb)
+
+In this part, we will segment our customers by grouping them in different clusters based on 7 different features. It will allow us to analyze purchase data by groups and customize marketing strategy for each of them.
 
 ### 1.1 Exploratory Analysis
 
@@ -73,7 +75,7 @@ Using 'Elbow method', we choose 4 clusters to segment our customers and get the 
 |     career focused         |     0.853901    |     0.997163          |     28.963121    |     1.068085     |     105759.119149    |     0.634043      |     0.422695           |     705      |     0.3525      |
 
 🔶 Insights: we have 4 segments of customers
-- Well-off: senior-aged, highly-educated, high income,
+- Well-off: senior-aged, highly-educated, high income
 - Fewer-opportunities: single, middle-aged, low income, low-level occupation, small living size
 - Career-focused: non-single, young, educated
 - Standard: others
@@ -101,7 +103,7 @@ Visualize the loadings by heatmap<br>
 
 🔶 Insights: each component shows a dimension of individual features
 - Component 1: represents the career focuses by relating to income, occupation, and settlement size
-- Component 2: represents the individual education and lifestyle by relating to sex, marital status, and education
+- Component 2: represents the individual education and lifestyle by relating to gender, marital status, and education
 - Component 3: represents the level of experience (work&life) by relating to marital status, age, and occupation
 
 #### K-Means Clustering with PCA
@@ -125,6 +127,8 @@ We can clearly identify 4 clusters!
 
 ## [2. Purchase Descriptive Analytics](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/2.%20Customer%20Analytics%20-%20Purchase%20Descriptive%20Analysis.ipynb)
 
+In this part, we want to get some ideas of how often customers bought our products, which product they bought, and how many they bought in the past. These will be helpful to our predictive analytics.
+
 ### 2.1 Data Segmentation
 We implement the standardization, PCA, and K-means clustering models from previous part, to segment our customers in purchase dataset. We have the following
 
@@ -136,8 +140,14 @@ We implement the standardization, PCA, and K-means clustering models from previo
 |     3    |     200000001    |     16     |     0            |     0        |     0           |     0                 |     0                    |     1.52       |     1.89       |     1.98       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
 |     4    |     200000001    |     18     |     0            |     0        |     0           |     0                 |     0                    |     1.52       |     1.89       |     1.99       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
 
-We visualize the segments<br>
+We visualize the proportions of total number of purchases by segments<br>
 ![image](https://user-images.githubusercontent.com/77659538/110487824-e8d6d380-8128-11eb-906b-12674c5f0c3b.png)
+
+🔶 Insights: we will most often see standard group shopping candy bars in our store. There are a few possible reasons:
+- they are the biggest customer segments (have more observations)
+- they visit the store more often than the others (more visits -> more purchases)
+- they are more likely to buy candy bars each time they shopping
+We will investigate further below
 
 ### 2.2 Purchase Occasion and Purchase Incidence
 Plot the average number of store visits for each of the four segments using a bar chart, and display the standard deviation as a straight line
@@ -145,15 +155,15 @@ Plot the average number of store visits for each of the four segments using a ba
 ![image](https://user-images.githubusercontent.com/77659538/110488070-1face980-8129-11eb-8e68-d3b46de7cc3a.png)
 
 🔶 Insights:
-- The standard deviation amongst customers from the second segment is quite high. This implies that the customers in this segment are at least homogenous that is least alike when it comes to how often they visit the grocery store
-- The standard fewer opportunities and well-off clusters are very similar in terms of their average store purchases. This is welcome information because it would make them more comparable with respect to our future analysis!
+- The standard deviation amongst 'Career-Focused' is quite high. This implies that the customers in this segment are at least homogenous that is least alike when it comes to how often they visit the grocery store
+- The standard, fewer opportunities, and well-off clusters are very similar in terms of their average store purchases. This is welcome information because it would make them more comparable with respect to our future analysis!
 
 Display the average number of purchases by segments, help us understand how often each group buys candy bars<br>
 ![image](https://user-images.githubusercontent.com/77659538/110488334-5a168680-8129-11eb-865c-b6c1184ca63a.png)
 
 🔶 Insights:
 - For Career-focused, standard deviation is the highest it might be that a part of the segment buys products very frequently, and another part less so. Although consumers in this segment have a somewhat similar income, the way that they might want to spend their money might differ.
-- The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line. The first segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
+- The most homogenous segment appears to be that of the standard. This is signified by the segment having the lowest standard deviation or shortest vertical line. The fewer opportunties segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
 
 ### 2.3 Brand Choice
 First, we select only rows where incidence is one. Then we make dummies for each of the 5 brands.<br>
@@ -172,10 +182,10 @@ First, we select only rows where incidence is one. Then we make dummies for each
 |     58691    |     0          |     1          |     0          |     0          |     0          |     0          |     200000500    |
 
 
-Visualize the brand choice by segments<br>
+Visualize the brand choice by segments (on average, how often each customer buy each brand in each segment)<br>
 ![image](https://user-images.githubusercontent.com/77659538/110488884-df01a000-8129-11eb-82f9-ffdad58c91ea.png)
 
-🔶 Insights:
+🔶 Insights: Each segment has preference on 1 or 2 brands
 - Well-off and Career-focused prefer pricy brands
 - Fewer-opportunities and standard prefer low price products
 
@@ -189,11 +199,17 @@ Compute the total revenue for each of the segments. <br>
 |     Fewer-Opportunities    |     2611.19            |     4768.52            |     3909.17            |     861.38             |     2439.75            |     14590.01         |     0.206                  |
 |     Well-Off               |     699.47             |     1298.23            |     725.54             |     14009.29           |     5509.69            |     22242.22         |     0.194                  |
 
+
 🔶 Insights:
-- Career-focused is the most prominent segment
-- Standard contributes the least
-- If brand 3 reduces its price, the Standard segment could pivot towards it
-- For well-off segment, Brand 4 could increase its price
+By total revenues
+- Career-focused brings the highest revenue by total and average
+- Well-off brings the second highest revenue even though they are the smallest segment 
+- Fewer-Opportunities contributes the least though represents most customers
+
+By brands
+- Brand 3 does not have any segment as its loyal customers. If brand 3 reduces its price, the Fewer-Opportunities segment could pivot towards it
+- Well-off segments mostly prefer brand 4, followed by brand 5. They seem to be not affected by price. Therefore, brand 4 could cautiously try to increase its price. (hypothesis here: will retain most of the customers and increase the revenue per sale)
+- Likewise, for career-focused, Brand 5 could increase its price. 
 
 
 ## [3. Purchase Predictive Analytics](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/3.%20Customer%20Analytics%20-%20Purchase%20Predictive%20Analytics.ipynb)
