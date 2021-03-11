@@ -114,14 +114,15 @@ Again, we choose 4 clusters to fit our data, and get the below results<br>
 |                            |     Sex         |     Marital status    |     Age          |     Education    |     Income           |     Occupation    |     Settlement size    |     Component 1    |     Component 2    |     Component 3    |
 |----------------------------|-----------------|-----------------------|------------------|------------------|----------------------|-------------------|------------------------|--------------------|--------------------|--------------------|
 |     Segment K-means PCA    |                 |                       |                  |                  |                      |                   |                        |                    |                    |                    |
-|     standard                      |     0.307190    |     0.098039          |     35.383442    |     0.766885     |     93566.102397     |     0.248366      |     0.039216           |     -1.048838      |     -0.892116      |     1.010446       |
+|     fewer opportunities                      |     0.307190    |     0.098039          |     35.383442    |     0.766885     |     93566.102397     |     0.248366      |     0.039216           |     -1.048838      |     -0.892116      |     1.010446       |
 |     career focused                      |     0.027350    |     0.167521          |     35.700855    |     0.731624     |     141489.721368    |     1.266667      |     1.475214           |     1.367167       |     -1.050209      |     -0.247981      |
-|     fewer opportunities                      |     0.900433    |     0.965368          |     28.913420    |     1.062049     |     107551.946609    |     0.676768      |     0.440115           |     -1.106918      |     0.706367       |     -0.778269      |
+|     standard                      |     0.900433    |     0.965368          |     28.913420    |     1.062049     |     107551.946609    |     0.676768      |     0.440115           |     -1.106918      |     0.706367       |     -0.778269      |
 |     well-off                      |     0.505703    |     0.688213          |     55.722433    |     2.129278     |     158391.676806    |     1.129278      |     1.110266           |     1.706153       |     2.031716       |     0.838839       |
 
 
 We plot data by 2 PCA components: Y axis - component 1, X axis - component 2<br>
-![image](https://user-images.githubusercontent.com/77659538/110485951-220e4400-8127-11eb-95df-af5173713103.png)
+![image](https://user-images.githubusercontent.com/77659538/110753351-70cff100-8281-11eb-97fc-80cffa1dfd52.png)
+
 
 We can clearly identify 4 clusters!
 
@@ -141,9 +142,10 @@ We implement the standardization, PCA, and K-means clustering models from previo
 |     4    |     200000001    |     18     |     0            |     0        |     0           |     0                 |     0                    |     1.52       |     1.89       |     1.99       |     ...    |     0              |     0              |     0      |     0                 |     47     |     1            |     110866    |     1             |     0                  |     0          |
 
 We visualize the proportions of total number of purchases by segments<br>
-![image](https://user-images.githubusercontent.com/77659538/110487824-e8d6d380-8128-11eb-906b-12674c5f0c3b.png)
+![image](https://user-images.githubusercontent.com/77659538/110753399-7fb6a380-8281-11eb-9f59-0eb077d0af0c.png)
 
-🔶 Insights: we will most often see standard group shopping candy bars in our store. There are a few possible reasons:
+
+🔶 Insights: we will most often see fewer-opportunities group shopping candy bars in our store. There are a few possible reasons:
 - they are the biggest customer segments (have more observations)
 - they visit the store more often than the others (more visits -> more purchases)
 - they are more likely to buy candy bars each time they shopping
@@ -152,18 +154,19 @@ We will investigate further below
 ### 2.2 Purchase Occasion and Purchase Incidence
 Plot the average number of store visits for each of the four segments using a bar chart, and display the standard deviation as a straight line
 
-![image](https://user-images.githubusercontent.com/77659538/110488070-1face980-8129-11eb-8e68-d3b46de7cc3a.png)
+![image](https://user-images.githubusercontent.com/77659538/110753413-8513ee00-8281-11eb-87b7-e88594b983cc.png)
 
 🔶 Insights:
 - The standard deviation amongst 'Career-Focused' is quite high. This implies that the customers in this segment are at least homogenous that is least alike when it comes to how often they visit the grocery store
 - The standard, fewer opportunities, and well-off clusters are very similar in terms of their average store purchases. This is welcome information because it would make them more comparable with respect to our future analysis!
 
 Display the average number of purchases by segments, help us understand how often each group buys candy bars<br>
-![image](https://user-images.githubusercontent.com/77659538/110488334-5a168680-8129-11eb-865c-b6c1184ca63a.png)
+![image](https://user-images.githubusercontent.com/77659538/110753615-bf7d8b00-8281-11eb-900b-457506ffc942.png)
+
 
 🔶 Insights:
 - For Career-focused, standard deviation is the highest it might be that a part of the segment buys products very frequently, and another part less so. Although consumers in this segment have a somewhat similar income, the way that they might want to spend their money might differ.
-- The most homogenous segment appears to be that of the standard. This is signified by the segment having the lowest standard deviation or shortest vertical line. The fewer opportunties segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
+- The most homogenous segment appears to be that of the fewer opportunities. This is signified by the segment having the lowest standard deviation or shortest vertical line. The standard segment seems consistent as well with about 25 average purchases and a standard deviation of 30.
 
 ### 2.3 Brand Choice
 First, we select only rows where incidence is one. Then we make dummies for each of the 5 brands.<br>
@@ -183,7 +186,7 @@ First, we select only rows where incidence is one. Then we make dummies for each
 
 
 Visualize the brand choice by segments (on average, how often each customer buy each brand in each segment)<br>
-![image](https://user-images.githubusercontent.com/77659538/110488884-df01a000-8129-11eb-82f9-ffdad58c91ea.png)
+![image](https://user-images.githubusercontent.com/77659538/110753651-cdcba700-8281-11eb-9c4c-fb29ac84d5e1.png)
 
 🔶 Insights: Each segment has preference on 1 or 2 brands
 - Well-off and Career-focused prefer pricy brands
@@ -194,24 +197,23 @@ Compute the total revenue for each of the segments. <br>
 |                            |     Revenue Brand 1    |     Revenue Brand 2    |     Revenue Brand 3    |     Revenue Brand 4    |     Revenue Brand 5    |     Total Revenue    |     Segment Proportions    |
 |----------------------------|------------------------|------------------------|------------------------|------------------------|------------------------|----------------------|----------------------------|
 |     Segment                |                        |                        |                        |                        |                        |                      |                            |
-|     Standard               |     2258.90            |     13909.78           |     722.06             |     1805.59            |     2214.82            |     20911.15         |     0.378                  |
+|     Fewer-Opportunities               |     2258.90            |     13909.78           |     722.06             |     1805.59            |     2214.82            |     20911.15         |     0.378                  |
 |     Career-Focused         |     736.09             |     1791.78            |     664.75             |     2363.84            |     19456.74           |     25013.20         |     0.222                  |
-|     Fewer-Opportunities    |     2611.19            |     4768.52            |     3909.17            |     861.38             |     2439.75            |     14590.01         |     0.206                  |
+|     Standard    |     2611.19            |     4768.52            |     3909.17            |     861.38             |     2439.75            |     14590.01         |     0.206                  |
 |     Well-Off               |     699.47             |     1298.23            |     725.54             |     14009.29           |     5509.69            |     22242.22         |     0.194                  |
 
 
-![image](https://user-images.githubusercontent.com/77659538/110742733-d5834f80-8271-11eb-82ec-2a83b6afea25.png)
+![image](https://user-images.githubusercontent.com/77659538/110753678-d328f180-8281-11eb-9985-5c4c648ae542.png)
 
 🔶 Insights:
 - Career-focused brings the highest revenue although they are far from the biggest standard segment by total number of purchases
 - Well-off brings the second highest revenue even though they are the smallest segment 
-- Fewer-Opportunities contributes the least though they are not the smallest segment
+- Standard contributes the least though they are not the smallest segment because they tend to buy low-priced products
 
-
-![image](https://user-images.githubusercontent.com/77659538/110742761-e03de480-8271-11eb-92d3-7d1b3cb3fd29.png)
+![image](https://user-images.githubusercontent.com/77659538/110753800-fb185500-8281-11eb-814d-48193713f8d5.png)
 
 🔶 Insights:
-- Brand 3 does not have any segment as its loyal customers. If brand 3 reduces its price, the Fewer-Opportunities segment could pivot towards it
+- Brand 3 does not have any segment as its loyal customers. If brand 3 reduces its price, the standard segment could pivot towards it since they seem to be struggling between brand 3 and brand 2.
 - Well-off segments mostly prefer brand 4, followed by brand 5. They seem to be not affected by price. Therefore, brand 4 could cautiously try to increase its price. (hypothesis here: will retain most of the customers and increase the revenue per sale)
 - Likewise, for career-focused, Brand 5 could increase its price. 
 
@@ -276,17 +278,40 @@ We have to investigate further by segments!
 
 
 #### Purchase Probability by Segments
-![image](https://user-images.githubusercontent.com/77659538/110494029-2853ee80-812e-11eb-9504-a992392b0349.png)
+![image](https://user-images.githubusercontent.com/77659538/110753953-2d29b700-8282-11eb-92b2-e8b17439157e.png)
 
 🔶 Insights:
-- The well-off segment are the least elastic when compared to the rest. So, their purchase probability elasticity is not as affected by price.
-- The price elasticities for the Standard segment seem to differ across price range. This may be because the standard segment is least homogenous, which we discovered during our descriptive analysis.
-- It may be that the customers in this segment have different shopping habits, which is why their customers start with being more elastic than average but then shift to being more inelastic than the average customer and indeed the Career-focused segment.
+- The well-off segment are the least elastic when compared to the rest. So, their purchase probability elasticity is not as affected by price. Fewer-opportunities are a lot more price-sensitive than other groups
+- The price elasticities for the fewer-opportunities segment seems to differ across price range (low in low prices, high in high prices). Reasons might be:
+  - We have more observations, so it is more accurate
+  - This segments enjoys candy bars so much that a price increase in the low price range doesn't affect them; once it becomes expensive, it doesn't make any financial sense to them to invest in it
 
 #### Purchase Probability with and without Promotion Feature
-![image](https://user-images.githubusercontent.com/77659538/110494242-5e916e00-812e-11eb-8c99-f7568c7bd4ab.png)
+we prepare the data and decide Y and X variable
+```
+Y = df_pa['Incidence']
 
-🔶 Insights:
+X = pd.DataFrame()
+X['Mean_Price'] = (df_pa['Price_1'] + 
+                   df_pa['Price_2'] + 
+                   df_pa['Price_3'] + 
+                   df_pa['Price_4'] + 
+                   df_pa['Price_5']) / 5
+
+# Include a second promotion feature. 
+#  To examine the effects of promotions on purchase probability.
+# Calculate the average promotion rate across the five brands. 
+#  Add the mean price for the brands.
+X['Mean_Promotion'] = (df_pa['Promotion_1'] +
+                       df_pa['Promotion_2'] +
+                       df_pa['Promotion_3'] +
+                       df_pa['Promotion_4'] +
+                       df_pa['Promotion_5'] ) / 5
+```
+We visualize the results with without promo side-by-side
+![image](https://user-images.githubusercontent.com/77659538/110770861-ceba0400-8294-11eb-9f5b-282f288169db.png)
+
+🔶 Insights: when we apply the promotion, we can at the same time increase the price a little bit without the fear that they will be less likely to buy our products
 - The purchase probability elasticity of the customer is less elastic when there is promotion
 - This is an important insight for marketers, as according to our model people are more likely to buy a product if there is some promotional activity rather than purchase a product with the same price, when it isn't on promotion.
 
@@ -317,12 +342,14 @@ We get the following coefficients:
 |     Price_4    |     0.70            |     -0.21           |     1.04            |     -1.25           |     -0.29           |
 |     Price_5    |     -0.20           |     0.59            |     0.45            |     0.25            |     -1.09           |
 
+🔶 Interpretation: each coefficient shows how the price change would affect the probability of choosing the relative brand. In general, brand choice probability goes up if its own price is lower and other brands' prices are higher.
 
 #### Own Price Elasticity Brand 5
 We fit our model and calculate the price elasticity for brand 5 at the same 'test price range'<br>
 By visualizing the result, we get<br>
 ![image](https://user-images.githubusercontent.com/77659538/110494977-0c048180-812f-11eb-8b0e-699f82603802.png)
 
+🔶 Interpretation: It shows us how it would affect brand 5 if they change their own price. 
 
 #### Cross Price Elasticity Brand 5, Cross Brand 4
 To calculate the cross brand price elasticity, we use new formula
@@ -333,18 +360,29 @@ brand5_cross_brand4_price_elasticity = -beta5 * price_range * pr_brand_4
 We visualize the the cross-price elasticity of purchase probability for brand 5 vs brand 4<br>
 ![image](https://user-images.githubusercontent.com/77659538/110495271-5423a400-812f-11eb-9c59-4023c515089d.png)
 
+🔶 Interpretation: It shows us how it would affect brand 5 if brand 4 change their price. 
+
+![image](https://user-images.githubusercontent.com/77659538/110764924-957e9580-828e-11eb-80cc-151841f98585.png)
+
+
 🔶 Insights:
-- We observe they are positive. As the price of the competitor brand increases, so does the probability for purchasing our own brand.
-- Even though the elasticity starts to decrease from the 1.45 mark, it is still positive, signaling that the increase in purchase probability for the own brand happens more slowly.
+- Brand 4 is a strong substitute for brand 5 for all prices up to \$1.65
+  - Note: the observed price range of brand 4 lies between \$1.76 and \$2.6 in this region
+  - These prices are out of the natural domain of brand 4, therefore if brand 4 had a substantially lower price it would be a very strong competitor a brand 5
+- Even though the elasticity starts to decrease from the 1.45 mark, it is still positive, signaling that the increase in purchase probability for brand 5 happens more slowly.
+  - When it comes to average customer, brand 4 is a weak substitute for brand 5 
+  - Brand 5 can create a marketing strategy targeting customers who choose brand 4, and attract them to buy own brand 5
 
 #### Own and Cross-Price Elasticity by Segment
-![image](https://user-images.githubusercontent.com/77659538/110495416-74536300-812f-11eb-9be2-188a45164262.png)
+![image](https://user-images.githubusercontent.com/77659538/110759426-901e4c80-8288-11eb-8eff-f37ba025ed97.png)
 
-🔶 Insights: The two segments, which seem to be of most interested in the marketing team of brand 5, seem to be the 'Career-focused' and the 'Well-off'. They are also the segments which purchase this brand most often.
-- The Career-focused segment is the most inelastic and they are the most loyal segment.
- - Based on our model, they do not seem to be that affected by price, therefore brand 5 could increase its price, without fear of significant loss of customers from this segment.
-- The Well-off segment on the other hand, seems to be more elastic. They also purchase the competitor brand 4 most often.
- - In order to target this segment, our analysis signals, that price needs to be decreased. However, keep in mind that other factors aside from price might be influencing the purchase behavior of this segment.
+🔶 Insights: Brand 5 should decrease its own price offering while gaining solid market share from the well-off and retaining the career-focused segment, the most frequent buyers of brand 5
+- For Career-focused segment, Brand 5 could increase its price, without fear of significant loss of customers from this segment
+  - The Career-focused segment is the most inelastic and they do not seem to be that affected by price
+  - The cross price elasticity also has extremely low values, meaning they are unlikely to switch to brand 4
+- For the Well-off segment, we'd better decrease brand 5 price to gain market share from this segment
+  - For this segment, own elasticity is much higher than 'career-focused'
+  - They also purchase the competitor brand 4 most often by having highest cross brand elasticity, meaning a tiny increase in price will lose customers
 
 ### 3.3 Purchase Quantity
 
@@ -392,7 +430,7 @@ model_quantity.coef_
 Out[110]:
 array([-0.8173651 , -0.10504673])
 ```
-It appears that promotion reflects negatively on the purchase quantity of the average client, which is unexpected.
+🔶 Interpretation: It appears that promotion reflects negatively on the purchase quantity of the average client, which is unexpected.
 
 #### Price Elasticity of Purchase Quantity with and without Promotion
 Calculate the price elasticity with new formula
@@ -400,7 +438,7 @@ Calculate the price elasticity with new formula
 price_elasticity_quantity_promotion_yes = beta_quantity * price_range / predict_quantity
 ```
 Plot the two elasticities (with and without promotion) side by side<br>
-![image](https://user-images.githubusercontent.com/77659538/110496501-7d90ff80-8130-11eb-80ff-976295954d42.png)
+![image](https://user-images.githubusercontent.com/77659538/110770960-f1e4b380-8294-11eb-9843-451a59cbd383.png)
 
 🔶 Insights:
 - We observe that the two elasticities are very close together for almost the entire price range.
