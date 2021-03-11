@@ -203,9 +203,9 @@ Compute the total revenue for each of the segments. <br>
 ![image](https://user-images.githubusercontent.com/77659538/110742733-d5834f80-8271-11eb-82ec-2a83b6afea25.png)
 
 🔶 Insights:
-- Career-focused brings the highest revenue by total and average
+- Career-focused brings the highest revenue although they are far from the biggest standard segment by total number of purchases
 - Well-off brings the second highest revenue even though they are the smallest segment 
-- Fewer-Opportunities contributes the least though represents most customers
+- Fewer-Opportunities contributes the least though they are not the smallest segment
 
 
 ![image](https://user-images.githubusercontent.com/77659538/110742761-e03de480-8271-11eb-92d3-7d1b3cb3fd29.png)
@@ -223,11 +223,11 @@ Compute the total revenue for each of the segments. <br>
 #### Model Building
 We implement the standardization, PCA, and K-means clustering models from part 1, to segment our customers in purchase dataset.<br>
 ```
-# Y is Incidence, as we want to predict the purchase probability for our customers
+# Y is Incidence (if the customer bought candy bars or not), as we want to predict the purchase probability for our customers
 Y = df_pa['Incidence']
 ```
 ```
-# Dependent variable is based on the average price of chocolate candy bars. 
+# Dependent variable is based on the average price of all five brands. 
 # X is a data frame, containing the mean across the five prices.
 X = pd.DataFrame()
 X['Mean_Price'] = (df_pa['Price_1'] +
@@ -246,8 +246,20 @@ model_purchase.fit(X, Y)
 ```
 
 #### Price Elasticity of Purchase Probability
+We first look at the price information for all brands<br>
+|       | Price_1  | Price_2  | Price_3  | Price_4  | Price_5  |
+|-------|----------|----------|----------|----------|----------|
+| count |    58693 |    58693 |    58693 |    58693 |    58693 |
+|  mean | 1.392074 | 1.780999 | 2.006789 | 2.159945 | 2.654798 |
+|   std | 0.091139 | 0.170868 | 0.046867 | 0.089825 | 0.098272 |
+|   min |      1.1 |     1.26 |     1.87 |     1.76 |     2.11 |
+|   25% |     1.34 |     1.58 |     1.97 |     2.12 |     2.63 |
+|   50% |     1.39 |     1.88 |     2.01 |     2.17 |     2.67 |
+|   75% |     1.47 |     1.89 |     2.06 |     2.24 |      2.7 |
+|   max |     1.59 |      1.9 |     2.14 |     2.26 |      2.8 |
+
 Since the prices of all 5 brands ranges with from 1.1 to 2.8. We will perform analysis on a slightly wider price range: 0.5 - 3.5<br>
-Then we fit our 'test price range' in our model to get the corresponding Purchase Probability.<br>
+Then we fit our 'test price range' in our model to get the corresponding Purchase Probability for each price point.<br>
 Next, we apply below formula to derive the price elasticity at each price point<br>
 ```
 # Elasticity = beta*price*(1-P(purchase))
@@ -256,16 +268,18 @@ pe = model_purchase.coef_[:, 0] * price_range * (1 - purchase_pr)
 By visualizing the result, we get<br>
 ![image](https://user-images.githubusercontent.com/77659538/110493304-921fc880-812d-11eb-834d-4094585e315e.png)
 
-🔶 Insights:
-- With prices lower than 1.25, we can increase our product price without losing too much in terms of purchase probability.
-- For prices higher than 1.25, We have more to gain by reducing our prices.
+🔶 Insights: we should decrease the overall price so we can gain more on overall purchase probability
+- With prices lower than 1.25, we can increase our product price without losing too much in terms of purchase probability. For prices higher than 1.25, We have more to gain by reducing our prices.
+- Since all brands have average price over 1.25, it's not good news for us.
+We have to investigate further by segments!
+
 
 
 #### Purchase Probability by Segments
 ![image](https://user-images.githubusercontent.com/77659538/110494029-2853ee80-812e-11eb-9504-a992392b0349.png)
 
 🔶 Insights:
-- The career-focused segment are the least elastic when compared to the rest. So, their purchase probability elasticity is not as affected by price.
+- The well-off segment are the least elastic when compared to the rest. So, their purchase probability elasticity is not as affected by price.
 - The price elasticities for the Standard segment seem to differ across price range. This may be because the standard segment is least homogenous, which we discovered during our descriptive analysis.
 - It may be that the customers in this segment have different shopping habits, which is why their customers start with being more elastic than average but then shift to being more inelastic than the average customer and indeed the Career-focused segment.
 
