@@ -1,11 +1,11 @@
 # Customer Analytics for Retail/FMCG Company
 
 ## Project Overview
-This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate suitable marketing strategies that could maximize revenues on each brand of candy bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' on the relationship between price and quantity sold. 
+This project aims to support a retail or FMCG (fast-moving consumer goods) company to formulate marketing and pricing strategies that could maximize revenues on each brand of candy bars. To reach the fullest potential of bringing up revenues, a company should find the 'sweet spot' for price to maximize three customer behaviours: purchase probability, brand choice probability, and purchase quantity. 
 
-Analysis on price elasticity would support us to find the optimal point in price-quantity relationship. We will look at price elasticities in three aspects: purchase probability, brand choice probability, and purchase quantity. By doing that, we can construct strategies to increase the likelihood of a customer purchasing our products on all shopping stages. 
+Data from customer purchase history were used for training the regression models to predict those three customer behaviours in a preconceived price range. The results were then converted into price elasticities so that we can examine the effects of changing price on each of the behaviours. Hence, we will be able to find the suitable marketing and pricing strategies.
 
-To better position our products, we will firstly perform segmentation on our customers to support our analysis on price elasticity, allowing us to customize marketing strategies for customers with different backgrounds.
+To better position our products, we will firstly perform segmentation on our customers to support our analysis on customer behaviours, allowing us to customize marketing strategies for customers with different backgrounds.
 
 
 ## Code and Resources Used
@@ -127,7 +127,7 @@ We can clearly identify 4 clusters!
 
 ## [2. Purchase Descriptive Analytics](https://github.com/shawn-y-sun/Customer_Analytics_Retail/blob/main/2.%20Customer%20Analytics%20-%20Purchase%20Descriptive%20Analysis.ipynb)
 
-In this part, we want to get some ideas of how often customers bought our products, which product they bought, and how many they bought in the past. These will be helpful to our predictive analytics.
+In this part, we want to get some ideas about the past bebaviors of our customer: how often they shopped and bought candy bars, which brand they chose more often, and how much they spent. The results can be used to cross-check our predictive results in part 3.
 
 ### 2.1 Data Segmentation
 We implement the standardization, PCA, and K-means clustering models from previous part, to segment our customers in purchase dataset. We have the following
